@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+
+""" Calculate n-th Fibonacci number: 
+	Based on matrix:
+		[Fn+1   Fn]   [1   1] ^ n
+		[Fn   Fn-1] = [1   0]
+"""
 def ma22_mult(a,b):
 	result = [[0,0],
 	          [0,0]]
@@ -28,4 +35,5 @@ def fib(n):
 	fibo = base_fib[0][0]
 	return fibo if n>0 else fibo*(-1)**((l+1)%2)
 
-print(fib(int(input("Which n-th fibonacci number??: "))))
+if __name__ == '__main__':
+	print(fib(int(input("Which n-th fibonacci number??: "))))
