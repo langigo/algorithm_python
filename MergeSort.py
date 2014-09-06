@@ -10,14 +10,21 @@ Idea of merge sort:
 def merge_sort(target, decrease=False):
 	if len(target)<=1:
 		return target
+	
+	#center of the list
 	mid_index = int(len(target)/2)
+
+	#divine into 2 sub-lists
 	sub_left = target[:mid_index]
 	sub_right = target[mid_index:]
 
+	#recursively sort sub-list
 	sub_left = merge_sort(sub_left, decrease)
 	sub_right = merge_sort(sub_right, decrease)
 
+	#merge sorted sub-lists
 	return merging(sub_left, sub_right, decrease)
+
 
 def merging(sleft, sright, decr):
 	combine = []
@@ -27,10 +34,9 @@ def merging(sleft, sright, decr):
 				combine.append(sleft.pop(0) if sleft[0]<=sright[0] else sright.pop(0))	
 			else:
 				combine.append(sleft.pop(0) if sleft[0]>=sright[0] else sright.pop(0))
-		elif len(sleft)>0:
-			combine.append(sleft.pop(0))
-		elif len(sright)>0:
-			combine.append(sright.pop(0))	
+		else:
+			combine+=sleft+sright
+			break
 	return combine
 
 if __name__ == '__main__':
